@@ -19,7 +19,7 @@ spec:
           image: titasuddin.azurecr.io/nodejs_app:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 3000
           resources:
             requests:
               cpu: "100m"
