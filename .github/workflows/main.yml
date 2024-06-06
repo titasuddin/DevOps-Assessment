@@ -33,5 +33,5 @@ jobs:
                 password: ${{ secrets.REGISTRY_PASSWORD }}
             - name: build image and push
               run: |
-                docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/myimage:${{ env.IMAGE_TAG }}
-                docker push ${{ env.REGISTRY_NAME }}.azurecr.io/myimage:${{ env.IMAGE_TAG }}
+                docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/nodejs_app:${{ env.IMAGE_TAG }}
+                docker push ${{ env.REGISTRY_NAME }}.azurecr.io/nodejs_app:${{ env.IMAGE_TAG }}
