@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: jodejs-app
-          image: 908198849120.dkr.ecr.ap-south-1.amazonaws.com/devopshint:1.1
+          image: tiasuddin.azurecr.io/nodejs_app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

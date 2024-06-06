@@ -41,6 +41,6 @@ jobs:
                 creds: '${{ secrets.AZURE_CREDENTIALS }}'
                 cluster-name: ${{ env.CLUSTER_NAME }}
                 resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
-            - name: get node info
+            - name: Deploy
               run: |
-                kubectl get nodes
+                kubectl apply -f deployment.yaml
