@@ -3,6 +3,11 @@ name: Nodejs Github Action
 on: 
   push:
     branches: [ "main" ]
+env:
+  REGISTRY_NAME: titasuddin
+  CLUSTER_NAME: aks-assesment1
+  CLUSTER_RESOURCE_GROUP: RG1
+  NAMESPACE: default
 
 jobs:
     build:
@@ -18,3 +23,10 @@ jobs:
               with:
                 version: 'v1.28.0' # default is latest stable
               id: install
+
+            - name: login to ACR
+              uses: azure/docker-login@v1
+              with:
+                login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
+                username: ${{ secrets.REGISTRY_USERNAME }} 
+                password: ${{ secrets.REGISTRY_PASSWORD }}
