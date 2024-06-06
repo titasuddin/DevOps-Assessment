@@ -11,9 +11,9 @@ spec:
     - http:
         paths:
         - path: /
-            backend:
-              service: 
-                name: nodejs
-                port: 
-                  number: 80
-            pathType: Exact
+          backend:
+            service: 
+              name: nodejs
+              port: 
+                number: 80
+          pathType: Exact
