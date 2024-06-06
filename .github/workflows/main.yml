@@ -8,6 +8,7 @@ env:
   CLUSTER_NAME: aks-assesment1
   CLUSTER_RESOURCE_GROUP: RG1
   NAMESPACE: default
+  IMAGE_TAG: latest
 
 jobs:
     build:
@@ -30,3 +31,7 @@ jobs:
                 login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
                 username: ${{ secrets.REGISTRY_USERNAME }} 
                 password: ${{ secrets.REGISTRY_PASSWORD }}
+            - name: build image and push
+              run: |
+                docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/myimage:${{ env.IMAGE_TAG }}
+                docker push ${{ env.REGISTRY_NAME }}.azurecr.io/myimage:${{ env.IMAGE_TAG }}
