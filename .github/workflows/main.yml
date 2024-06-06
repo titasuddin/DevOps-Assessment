@@ -41,6 +41,17 @@ jobs:
                 creds: '${{ secrets.AZURE_CREDENTIALS }}'
                 cluster-name: ${{ env.CLUSTER_NAME }}
                 resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+
+            # Create imagepullsecret for Azure Container registry (ACR)
+            - uses: azure/k8s-create-secret@v1
+              with:
+                container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
+                container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
+                container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+                secret-name: registry-connection
+                namespace: ${{ env.NAMESPACE }}
+            
+            
             - name: Deploy
               run: |
                 kubectl apply -f deployment.yaml

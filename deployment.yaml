@@ -17,6 +17,8 @@ spec:
       containers:
         - name: jodejs-app
           image: tiasuddin.azurecr.io/nodejs_app:latest
+          imagePullSecrets:
+          - name: registry-connection
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
